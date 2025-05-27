@@ -449,3 +449,48 @@ public:
         return exprNode;
     }
 };
+
+int evalExpr(const Node &expr, unordered_map<string, int> &vars)
+{
+    if (expr.label == "Expr")
+    {
+        if (expr.children.size() == 1)
+        {
+            string val = expr.children[0].label.substr(7); // "Value: "
+            if (!val.empty() && isdigit(val[0]))
+                return stoi(val);
+            if (vars.count(val))
+                return vars[val];
+            return 0;
+        }
+        else if (expr.children.size() == 3)
+        {
+            int left = evalExpr(expr.children[0], vars);
+            string op = expr.children[1].label.substr(4); // "Op: "
+            int right = evalExpr(expr.children[2], vars);
+            if (op == "+")
+                return left + right;
+            if (op == "-")
+                return left - right;
+            if (op == "*")
+                return left * right;
+            if (op == "/")
+                return right != 0 ? left / right : 0;
+            if (op == "%")
+                return right != 0 ? left % right : 0;
+            if (op == "==")
+                return left == right;
+            if (op == "!=")
+                return left != right;
+            if (op == "<")
+                return left < right;
+            if (op == ">")
+                return left > right;
+            if (op == "<=")
+                return left <= right;
+            if (op == ">=")
+                return left >= right;
+        }
+    }
+    return 0;
+}
