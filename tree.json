@@ -1,0 +1,369 @@
+{
+    "children": [
+        {
+            "children": [],
+            "name": "Include: #include <iostream>"
+        },
+        {
+            "children": [],
+            "name": "Using: namespace std"
+        },
+        {
+            "children": [
+                {
+                    "children": [],
+                    "name": "ReturnType: int"
+                },
+                {
+                    "children": [],
+                    "name": "FunctionName: main"
+                },
+                {
+                    "children": [],
+                    "name": "Parameters"
+                },
+                {
+                    "children": [
+                        {
+                            "children": [
+                                {
+                                    "children": [],
+                                    "name": "int n"
+                                }
+                            ],
+                            "name": "VarDecl"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "children": [],
+                                    "name": "int m"
+                                }
+                            ],
+                            "name": "VarDecl"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "children": [
+                                        {
+                                            "children": [],
+                                            "name": "Value: \"Enter a number:\""
+                                        }
+                                    ],
+                                    "name": "Expr"
+                                }
+                            ],
+                            "name": "Cout"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "children": [],
+                                    "name": "Var: n"
+                                }
+                            ],
+                            "name": "Cin"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "children": [
+                                        {
+                                            "children": [
+                                                {
+                                                    "children": [],
+                                                    "name": "Value: n"
+                                                }
+                                            ],
+                                            "name": "Expr"
+                                        },
+                                        {
+                                            "children": [],
+                                            "name": "Op: <"
+                                        },
+                                        {
+                                            "children": [
+                                                {
+                                                    "children": [],
+                                                    "name": "Value: 0"
+                                                }
+                                            ],
+                                            "name": "Expr"
+                                        }
+                                    ],
+                                    "name": "Expr"
+                                },
+                                {
+                                    "children": [
+                                        {
+                                            "children": [
+                                                {
+                                                    "children": [
+                                                        {
+                                                            "children": [],
+                                                            "name": "Value: \"Negative number!\""
+                                                        }
+                                                    ],
+                                                    "name": "Expr"
+                                                }
+                                            ],
+                                            "name": "Cout"
+                                        }
+                                    ],
+                                    "name": "Block"
+                                },
+                                {
+                                    "children": [
+                                        {
+                                            "children": [
+                                                {
+                                                    "children": [
+                                                        {
+                                                            "children": [],
+                                                            "name": "Value: n"
+                                                        }
+                                                    ],
+                                                    "name": "Expr"
+                                                },
+                                                {
+                                                    "children": [],
+                                                    "name": "Op: =="
+                                                },
+                                                {
+                                                    "children": [
+                                                        {
+                                                            "children": [],
+                                                            "name": "Value: 0"
+                                                        }
+                                                    ],
+                                                    "name": "Expr"
+                                                }
+                                            ],
+                                            "name": "Expr"
+                                        },
+                                        {
+                                            "children": [
+                                                {
+                                                    "children": [
+                                                        {
+                                                            "children": [
+                                                                {
+                                                                    "children": [],
+                                                                    "name": "Value: \"Zero!\""
+                                                                }
+                                                            ],
+                                                            "name": "Expr"
+                                                        }
+                                                    ],
+                                                    "name": "Cout"
+                                                }
+                                            ],
+                                            "name": "Block"
+                                        },
+                                        {
+                                            "children": [
+                                                {
+                                                    "children": [
+                                                        {
+                                                            "children": [
+                                                                {
+                                                                    "children": [],
+                                                                    "name": "Value: \"Positive number!\""
+                                                                }
+                                                            ],
+                                                            "name": "Expr"
+                                                        }
+                                                    ],
+                                                    "name": "Cout"
+                                                }
+                                            ],
+                                            "name": "Block"
+                                        }
+                                    ],
+                                    "name": "If"
+                                }
+                            ],
+                            "name": "If"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "children": [
+                                        {
+                                            "children": [
+                                                {
+                                                    "children": [
+                                                        {
+                                                            "children": [],
+                                                            "name": "Value: n"
+                                                        }
+                                                    ],
+                                                    "name": "Expr"
+                                                },
+                                                {
+                                                    "children": [],
+                                                    "name": "Op: %"
+                                                },
+                                                {
+                                                    "children": [
+                                                        {
+                                                            "children": [],
+                                                            "name": "Value: 2"
+                                                        }
+                                                    ],
+                                                    "name": "Expr"
+                                                }
+                                            ],
+                                            "name": "Expr"
+                                        },
+                                        {
+                                            "children": [],
+                                            "name": "Op: =="
+                                        },
+                                        {
+                                            "children": [
+                                                {
+                                                    "children": [],
+                                                    "name": "Value: 0"
+                                                }
+                                            ],
+                                            "name": "Expr"
+                                        }
+                                    ],
+                                    "name": "Expr"
+                                },
+                                {
+                                    "children": [
+                                        {
+                                            "children": [
+                                                {
+                                                    "children": [
+                                                        {
+                                                            "children": [],
+                                                            "name": "Value: \" Even!\""
+                                                        }
+                                                    ],
+                                                    "name": "Expr"
+                                                }
+                                            ],
+                                            "name": "Cout"
+                                        }
+                                    ],
+                                    "name": "Block"
+                                },
+                                {
+                                    "children": [
+                                        {
+                                            "children": [
+                                                {
+                                                    "children": [
+                                                        {
+                                                            "children": [],
+                                                            "name": "Value: \" Odd!\""
+                                                        }
+                                                    ],
+                                                    "name": "Expr"
+                                                }
+                                            ],
+                                            "name": "Cout"
+                                        }
+                                    ],
+                                    "name": "Block"
+                                }
+                            ],
+                            "name": "If"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "children": [
+                                        {
+                                            "children": [
+                                                {
+                                                    "children": [],
+                                                    "name": "Value: n"
+                                                }
+                                            ],
+                                            "name": "Expr"
+                                        },
+                                        {
+                                            "children": [],
+                                            "name": "Op: >"
+                                        },
+                                        {
+                                            "children": [
+                                                {
+                                                    "children": [],
+                                                    "name": "Value: 100"
+                                                }
+                                            ],
+                                            "name": "Expr"
+                                        }
+                                    ],
+                                    "name": "Expr"
+                                },
+                                {
+                                    "children": [
+                                        {
+                                            "children": [
+                                                {
+                                                    "children": [
+                                                        {
+                                                            "children": [],
+                                                            "name": "Value: \" Large!\""
+                                                        }
+                                                    ],
+                                                    "name": "Expr"
+                                                }
+                                            ],
+                                            "name": "Cout"
+                                        }
+                                    ],
+                                    "name": "Block"
+                                },
+                                {
+                                    "children": [
+                                        {
+                                            "children": [
+                                                {
+                                                    "children": [
+                                                        {
+                                                            "children": [],
+                                                            "name": "Value: \" Small or medium!\""
+                                                        }
+                                                    ],
+                                                    "name": "Expr"
+                                                }
+                                            ],
+                                            "name": "Cout"
+                                        }
+                                    ],
+                                    "name": "Block"
+                                }
+                            ],
+                            "name": "If"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "children": [
+                                        {
+                                            "children": [],
+                                            "name": "Value: 0"
+                                        }
+                                    ],
+                                    "name": "Expr"
+                                }
+                            ],
+                            "name": "Return"
+                        }
+                    ],
+                    "name": "Body"
+                }
+            ],
+            "name": "Function"
+        }
+    ],
+    "name": "Program"
+}

@@ -1,0 +1,64 @@
+[
+    {
+        "action": "call",
+        "function": " main"
+    },
+    {
+        "action": "vardecl",
+        "variable": "n"
+    },
+    {
+        "action": "vardecl",
+        "variable": "m"
+    },
+    {
+        "action": "cout"
+    },
+    {
+        "action": "cin"
+    },
+    {
+        "action": "if_enter"
+    },
+    {
+        "action": "if_taken",
+        "branch": "else"
+    },
+    {
+        "action": "if_enter"
+    },
+    {
+        "action": "if_taken",
+        "branch": "then"
+    },
+    {
+        "action": "cout"
+    },
+    {
+        "action": "if_enter"
+    },
+    {
+        "action": "if_taken",
+        "branch": "then"
+    },
+    {
+        "action": "cout"
+    },
+    {
+        "action": "if_enter"
+    },
+    {
+        "action": "if_taken",
+        "branch": "else"
+    },
+    {
+        "action": "cout"
+    },
+    {
+        "action": "return_stmt"
+    },
+    {
+        "action": "return",
+        "function": " main"
+    }
+]

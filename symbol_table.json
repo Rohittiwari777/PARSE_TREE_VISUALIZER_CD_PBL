@@ -1,0 +1,17 @@
+[
+    {
+        "name": "main",
+        "scope": "global",
+        "type": "int (function)"
+    },
+    {
+        "name": "n",
+        "scope": "main",
+        "type": "int"
+    },
+    {
+        "name": "m",
+        "scope": "main",
+        "type": "int"
+    }
+]
