@@ -1,7 +1,13 @@
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <vector>
 #include <regex>
+#include <stdexcept>
+#include <unordered_map>
+#include "json.hpp"
 
+using json = nlohmann::json;
 using namespace std;
 
 struct Token
@@ -72,6 +78,7 @@ vector<Token> tokenize(const string &code)
     }
     return tokens;
 }
+
 // Tree Node
 struct Node
 {
@@ -494,7 +501,6 @@ int evalExpr(const Node &expr, unordered_map<string, int> &vars)
     }
     return 0;
 }
-
 
 json nodeToJson(const Node &node)
 {
