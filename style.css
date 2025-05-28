@@ -3,6 +3,71 @@ body {
     font-family: sans-serif;
     text-align: center;
     background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Code Input Section */
+#code-input-section {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#code-input {
+    width: 90%;
+    height: 300px;
+    margin: 20px auto;
+    padding: 15px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    resize: vertical;
+    background-color: #fff;
+}
+
+#convert-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#convert-btn:hover {
+    background-color: #45a049;
+}
+
+#status-message {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+}
+
+.error {
+    background-color: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1;
+}
+
+/* Visualization Section */
+#visualization-section {
+    margin-top: 30px;
 }
 
 #tree {
@@ -42,5 +107,5 @@ body {
 .link {
     fill: none;
     stroke: #999;
-    stroke-width:2px;
+    stroke-width: 2px;
 }
