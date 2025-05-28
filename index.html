@@ -9,9 +9,22 @@
 </head>
 
 <body>
-    <h2>Parse Tree Visualizer</h2>
-    <div id="branch-info" style="font-weight:bold; color:#ff6f61; margin-bottom:10px;"></div>
-    <div id="tree"></div>
+    <div class="container">
+        <h2>Parse Tree Visualizer</h2>
+        
+        <!-- Code Input Section -->
+        <div id="code-input-section">
+            <textarea id="code-input" placeholder="Enter your C++ code here..."></textarea>
+            <button id="convert-btn">Convert & Visualize</button>
+            <div id="status-message"></div>
+        </div>
+
+        <!-- Visualization Section -->
+        <div id="visualization-section" style="display: none;">
+            <div id="branch-info" style="font-weight:bold; color:#ff6f61; margin-bottom:10px;"></div>
+            <div id="tree"></div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 
