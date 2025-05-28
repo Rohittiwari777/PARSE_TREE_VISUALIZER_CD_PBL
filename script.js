@@ -1,9 +1,74 @@
-Promise.all([
-    fetch('tree.json').then(res => res.json()),
-    fetch('trace.json').then(res => res.json())
-]).then(([treeData, traceData]) => {
-    renderTree(treeData, traceData);
+// Get DOM elements
+const codeInput = document.getElementById('code-input');
+const convertBtn = document.getElementById('convert-btn');
+const statusMessage = document.getElementById('status-message');
+const visualizationSection = document.getElementById('visualization-section');
+
+// Add event listener to the convert button
+convertBtn.addEventListener('click', async () => {
+    const code = codeInput.value.trim();
+    if (!code) {
+        showStatus('Please enter some code first!', 'error');
+        return;
+    }
+
+    try {
+        // Show loading state
+        convertBtn.disabled = true;
+        convertBtn.textContent = 'Processing...';
+        showStatus('Processing your code...', 'info');
+
+        // Save code to input.cpp
+        const response = await fetch('/save-code', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ code }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to save code');
+        }
+
+        // Run the parser
+        const parseResponse = await fetch('/run-parser', {
+            method: 'POST',
+        });
+
+        if (!parseResponse.ok) {
+            throw new Error('Failed to parse code');
+        }
+
+        // Show success message and visualization
+        showStatus('Code processed successfully!', 'success');
+        visualizationSection.style.display = 'block';
+
+        // Load and render the tree
+        const [treeData, traceData] = await Promise.all([
+            fetch('tree.json').then(res => res.json()),
+            fetch('trace.json').then(res => res.json())
+        ]);
+
+        // Clear previous visualization if any
+        document.getElementById('tree').innerHTML = '';
+        
+        // Render the new tree
+        renderTree(treeData, traceData);
+
+    } catch (error) {
+        showStatus('Error: ' + error.message, 'error');
+    } finally {
+        // Reset button state
+        convertBtn.disabled = false;
+        convertBtn.textContent = 'Convert & Visualize';
+    }
 });
+
+function showStatus(message, type) {
+    statusMessage.textContent = message;
+    statusMessage.className = type;
+}
 
 function getNodeColor(label) {
     if (label.startsWith("Function")) return "url(#func-gradient)";
@@ -30,7 +95,7 @@ function renderTree(treeData, traceData) {
         .append("svg")
         .attr("width", "100%")
         .attr("height", "100%")
-        .attr("viewBox", 0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom})
+        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
         .attr("preserveAspectRatio", "xMidYMid meet");
 
     svg.append("defs").append("linearGradient")
@@ -48,7 +113,7 @@ function renderTree(treeData, traceData) {
         .attr("stop-color", d => d.color);
 
     const g = svg.append("g")
-        .attr("transform", translate(${margin.left},${margin.top}));
+        .attr("transform", `translate(${margin.left},${margin.top})`);
 
     const root = d3.hierarchy(treeData);
 
@@ -76,7 +141,7 @@ function renderTree(treeData, traceData) {
         .enter()
         .append('g')
         .attr('class', 'node')
-        .attr('transform', d => translate(${d.y},${d.x}));
+        .attr('transform', d => `translate(${d.y},${d.x})`);
 
     node.append('circle')
         .attr('r', 14)
@@ -106,3 +171,13 @@ function renderTree(treeData, traceData) {
 
     // No animation/highlighting of flow for any statements
 }
+
+// Load sample code into textarea
+fetch('input.cpp')
+    .then(response => response.text())
+    .then(code => {
+        codeInput.value = code;
+    })
+    .catch(error => {
+        console.error('Error loading sample code:', error);
+    });
