@@ -17,6 +17,21 @@ struct Token
     string value;
 };
 
+// Tokenize the code .... 
+// This function breaks a C++-like code string into tokens 
+// (like keywords, identifiers, numbers, etc.) using regular expressions. 
+// This is part of the lexical analysis phase of a compiler.
+
+// Loop over each character in the input string code:
+// Skip whitespace.
+
+// Try each regex pattern in order to match a token from the current position.
+// If a regex matches from the current character (it), it's a valid token.
+
+// If nothing matches, throw an error (Unrecognized token).
+
+// Return the full list of tokens.
+
 vector<Token> tokenize(const string &code)
 {
     vector<Token> tokens;
@@ -80,6 +95,15 @@ vector<Token> tokenize(const string &code)
     return tokens;
 }
 
+
+// This is a recursive-descent parser that:
+// Parses a C++-like source code from a list of tokens
+// Builds a tree structure (Node) for each part (functions, statements, etc.)
+// Builds a symbol table for variables/functions with scope
+// Generates an AST (Abstract Syntax Tree) rooted at "Program"
+
+
+
 // Tree Node
 struct Node
 {
@@ -111,18 +135,42 @@ class Parser
     size_t pos = 0;
     string currentScope = "global";
 
+    // ✅ Token peek()
+    // Purpose: Look at the current token without moving forward in the token stream.
+    // Returns: The token at tokens[pos].
+    // Throws: Error if we’ve reached the end of tokens.
+    // Use case: Just checking what's next, without consuming it.
+
     Token peek()
     {
         if (pos < tokens.size())
             return tokens[pos];
         throw runtime_error("Unexpected end of input");
     }
+
+    // ✅ Token advance()
+    // Purpose: Return the current token and then move to the next one.
+    // Returns: The token at tokens[pos], then increments pos.
+    // Throws: Error if there are no more tokens.
+    // Use case: When you are ready to consume a token.
+
+
     Token advance()
     {
         if (pos < tokens.size())
             return tokens[pos++];
         throw runtime_error("Unexpected end of input");
     }
+
+    ✅ bool match(const string &val)
+    // Purpose: Check if the current token's value matches val.
+    // If matched:
+    // Moves forward (++pos)
+    // Returns true
+    // Else: Returns false
+    // Use case: For checking specific symbols like "(", ";", etc.
+
+
     bool match(const string &val)
     {
         if (pos < tokens.size() && tokens[pos].value == val)
@@ -144,6 +192,14 @@ class Parser
 
 public:
     Parser(const vector<Token> &tokens) : tokens(tokens) {}
+
+
+    // What it does:
+    // Creates a root node called "Program".
+    // Handles preprocessor lines (e.g., #include <iostream>) and adds them as "Include: ...".
+    // Skips using namespace std; and adds it as "Using: namespace std".
+    // Parses all functions one by one using parseFunction() and adds them to the program's children.
+    // Returns the complete syntax tree for the program.
 
     Node parse()
     {
@@ -249,6 +305,13 @@ public:
         currentScope = prevScope;
         return funcNode;
     }
+
+
+// ---------------------------------------------------------------------------
+
+    // What it does:
+    // Parses a single statement (like variable declaration, return, if, while, etc.).
+    // Returns the syntax tree for the statement.
 
     Node parseStatement()
     {
@@ -408,6 +471,10 @@ public:
         throw runtime_error("Unknown statement starting with: " + first.value);
     }
 
+    // What it does:
+    // Parses an expression (like 1 + 2, a, a + b, etc.).
+    // Returns the syntax tree for the expression.
+
     Node parseExpression()
     {
         Node left = parseSimpleExpression();
@@ -429,6 +496,10 @@ public:
         }
         return left;
     }
+
+    // What it does:
+    // Parses a simple expression (like 1, a, a(), etc.).
+    // Returns the syntax tree for the simple expression.
 
     Node parseSimpleExpression()
     {
@@ -457,6 +528,8 @@ public:
         return exprNode;
     }
 };
+
+// --- Expression Evaluation ---
 
 int evalExpr(const Node &expr, unordered_map<string, int> &vars)
 {
@@ -516,6 +589,8 @@ json nodeToJson(const Node &node)
 }
 
 // --- Trace Generation ---
+
+
 void simulateExecution(const Node &node, unordered_map<string, int> &vars)
 {
     if (node.label == "Function")
@@ -670,6 +745,8 @@ void simulateExecution(const Node &node, unordered_map<string, int> &vars)
         }
     }
 }
+
+    // --- Main ---
 
 int main()
 {
